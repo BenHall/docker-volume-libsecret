@@ -24,5 +24,8 @@ test: build
 clean:
 	@rm $(APP)
 
-.PHONY: add-deps build build-static test clean
+dev:
+	docker run -it --rm -w /go/src/github.com/$(APP) -v $(shell pwd)/vendor/:/go/src/ -v $(shell pwd):/go/src/github.com/$(APP) golang:1.6
+
+.PHONY: add-deps build build-static test clean dev
 
